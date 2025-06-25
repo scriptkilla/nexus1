@@ -61,7 +61,8 @@ export function LLMManagement() {
     { value: "Anthropic", label: "Anthropic" },
     { value: "Google", label: "Google Gemini" },
     { value: "Mistral", label: "Mistral AI" },
-    { value: "Grok", label: "Grok" }, // Added Grok
+    { value: "Grok", label: "Grok" },
+    { value: "Perplexity", label: "Perplexity AI" }, // Added Perplexity
     { value: "Custom", label: "Custom/Other" },
   ]
 
@@ -82,9 +83,15 @@ export function LLMManagement() {
     { value: "gemini-1.5-flash", label: "Gemini 1.5 Flash" },
   ]
 
-  const GROK_MODELS = [ // Added Grok models
+  const GROK_MODELS = [
     { value: "grok-1", label: "Grok-1" },
     { value: "grok-1.5", label: "Grok-1.5" },
+  ]
+
+  const PERPLEXITY_MODELS = [ // Added Perplexity models
+    { value: "llama-3-8b-instruct", label: "Llama 3 8B Instruct" },
+    { value: "llama-3-70b-instruct", label: "Llama 3 70B Instruct" },
+    { value: "mixtral-8x7b-instruct", label: "Mixtral 8x7B Instruct" },
   ]
 
   const getModelsForProvider = (provider: string) => {
@@ -95,8 +102,10 @@ export function LLMManagement() {
         return ANTHROPIC_MODELS
       case "Google":
         return GOOGLE_MODELS
-      case "Grok": // Case for Grok
+      case "Grok":
         return GROK_MODELS
+      case "Perplexity": // Case for Perplexity
+        return PERPLEXITY_MODELS
       default:
         return [{ value: "default-model", label: "Default Model" }]
     }
