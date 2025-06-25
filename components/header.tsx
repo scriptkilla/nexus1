@@ -32,7 +32,7 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
       <header className="bg-card border-b border-border p-4">
         <div className="flex items-center justify-between">
           {/* NEXUS Logo Placeholder */}
-          <div className="text-lg font-bold text-primary">NEXUS</div>
+          <div className="text-lg font-bold text-primary"></div>
           <div className="flex items-center gap-4 flex-1 max-w-md">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -53,10 +53,8 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
   return (
     <header className="bg-card border-b border-border p-4">
       <div className="flex items-center justify-between">
-        {/* NEXUS Logo Text */}
-        <div className="min-w-[100px]">
-          <div className="text-lg font-bold text-primary">NEXUS</div>
-        </div>
+        {/* Empty div for logo area */}
+        <div className="min-w-[100px]"></div>
 
         {/* Search Input and Button Group - Centered */}
         <div className="flex flex-1 justify-center mx-4">
