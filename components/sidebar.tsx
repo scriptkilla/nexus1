@@ -88,7 +88,11 @@ export function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
       </ScrollArea>
 
       <div className="p-3 border-t">
-        <Button variant="ghost" className={`w-full justify-start gap-3 ${isCollapsed ? "px-2" : "px-3"}`}>
+        <Button
+          variant="ghost"
+          className={`w-full justify-start gap-3 ${isCollapsed ? "px-2" : "px-3"}`}
+          onClick={() => setActiveSection("profile")} // Navigate to profile for settings
+        >
           <Settings className="w-5 h-5 flex-shrink-0" />
           {!isCollapsed && <span>Settings</span>}
         </Button>
