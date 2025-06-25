@@ -16,7 +16,7 @@ import { Notifications } from "@/components/notifications"
 import { Profile } from "@/components/profile"
 import { AIGameCreator } from "@/components/ai-game-creator"
 import { LLMManagement } from "@/components/llm-management"
-import { SettingsPanel } from "@/components/settings-panel" // Import the new SettingsPanel
+import { SettingsPanel } from "@/components/settings-panel"
 import { Toaster } from "sonner"
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
         return <Notifications />
       case "profile":
         return <Profile />
-      case "settings-panel": // New case for Settings Panel
+      case "settings-panel":
         return <SettingsPanel />
       default:
         return <Feed />
@@ -62,7 +62,7 @@ export default function Home() {
       <div className="flex">
         <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
         <div className="flex-1 flex flex-col">
-          <Header />
+          <Header setActiveSection={setActiveSection} />
           <main className="flex-1 overflow-auto">{renderContent()}</main>
         </div>
       </div>

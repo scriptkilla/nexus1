@@ -7,7 +7,11 @@ import { Search, Plus, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
-export function Header() {
+interface HeaderProps {
+  setActiveSection: (section: string) => void;
+}
+
+export function Header({ setActiveSection }: HeaderProps) {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -54,7 +58,7 @@ export function Header() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button size="sm" className="gap-2">
+                <Button size="sm" className="gap-2" onClick={() => setActiveSection("feed")}>
                   <Plus className="w-4 h-4" />
                   Create Post
                 </Button>
