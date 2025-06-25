@@ -37,13 +37,14 @@ export function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
     { id: "nft", label: "NFT Marketplace", icon: ShoppingBag },
     { id: "ai-tools", label: "AI Creator Tools", icon: Sparkles },
     { id: "ai-game-creator", label: "AI Game Creator", icon: Wand2 },
-    { id: "llm-management", label: "LLM Management", icon: Brain }, // New menu item
+    { id: "llm-management", label: "LLM Management", icon: Brain },
     { id: "earnings", label: "Creator Earnings", icon: DollarSign },
     { id: "swap", label: "Token Swap", icon: ArrowUpDown },
     { id: "live-chat", label: "Live Chat", icon: MessageSquare },
     { id: "messages", label: "Messages", icon: Mail, badge: 3 },
     { id: "notifications", label: "Notifications", icon: Bell, badge: 12 },
     { id: "profile", label: "Profile", icon: User },
+    { id: "settings-panel", label: "Settings", icon: Settings }, // New menu item for settings panel
   ]
 
   return (
@@ -88,14 +89,7 @@ export function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
       </ScrollArea>
 
       <div className="p-3 border-t">
-        <Button
-          variant="ghost"
-          className={`w-full justify-start gap-3 ${isCollapsed ? "px-2" : "px-3"}`}
-          onClick={() => setActiveSection("profile")} // Navigate to profile for settings
-        >
-          <Settings className="w-5 h-5 flex-shrink-0" />
-          {!isCollapsed && <span>Settings</span>}
-        </Button>
+        {/* The Settings button is now part of the main menuItems array */}
         <Button
           variant="ghost"
           className={`w-full justify-start gap-3 ${isCollapsed ? "px-2" : "px-3"} text-red-600 hover:text-red-700 hover:bg-red-50`}

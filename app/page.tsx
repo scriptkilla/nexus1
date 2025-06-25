@@ -15,8 +15,9 @@ import { Messages } from "@/components/messages"
 import { Notifications } from "@/components/notifications"
 import { Profile } from "@/components/profile"
 import { AIGameCreator } from "@/components/ai-game-creator"
-import { LLMManagement } from "@/components/llm-management" // Import the new component
-import { Toaster } from "sonner" // Import Sonner Toaster
+import { LLMManagement } from "@/components/llm-management"
+import { SettingsPanel } from "@/components/settings-panel" // Import the new SettingsPanel
+import { Toaster } from "sonner"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("feed")
@@ -35,7 +36,7 @@ export default function Home() {
         return <AICreatorTools />
       case "ai-game-creator":
         return <AIGameCreator />
-      case "llm-management": // New case for LLM Management
+      case "llm-management":
         return <LLMManagement />
       case "earnings":
         return <CreatorEarnings />
@@ -49,6 +50,8 @@ export default function Home() {
         return <Notifications />
       case "profile":
         return <Profile />
+      case "settings-panel": // New case for Settings Panel
+        return <SettingsPanel />
       default:
         return <Feed />
     }
@@ -63,7 +66,7 @@ export default function Home() {
           <main className="flex-1 overflow-auto">{renderContent()}</main>
         </div>
       </div>
-      <Toaster /> {/* Add the Sonner Toaster component here */}
+      <Toaster />
     </div>
   )
 }
