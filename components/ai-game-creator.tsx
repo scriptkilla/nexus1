@@ -33,6 +33,7 @@ import {
 export function AIGameCreator() {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [selectedAiEngine, setSelectedAiEngine] = useState("nexus-engine") // New state for AI Engine
   const [gameSettings, setGameSettings] = useState({
     difficulty: [50],
     duration: [5],
@@ -147,7 +148,7 @@ export function AIGameCreator() {
     // Simulate AI generation
     setTimeout(() => {
       setIsGenerating(false)
-      console.log("Game generated!")
+      console.log("Game generated with AI Engine:", selectedAiEngine)
     }, 3000)
   }
 
@@ -344,6 +345,22 @@ export function AIGameCreator() {
                   <p className="text-xs text-muted-foreground mt-2">
                     Supported formats: JPG, PNG, GIF, WebP (Max 5MB each, up to 10 images)
                   </p>
+                </div>
+
+                {/* New AI Engine Selection */}
+                <div>
+                  <Label className="text-sm font-medium mb-2 block">AI Engine</Label>
+                  <Select value={selectedAiEngine} onValueChange={setSelectedAiEngine}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select AI Engine" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="nexus-engine">NEXUS Game Engine (Recommended)</SelectItem>
+                      <SelectItem value="unity-ai">Unity AI</SelectItem>
+                      <SelectItem value="unreal-ai">Unreal Engine AI</SelectItem>
+                      <SelectItem value="custom-llm">Custom LLM Integration</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div>
