@@ -57,13 +57,19 @@ export function LLMManagement() {
   }
 
   const LLM_PROVIDERS = [
+    { value: "NEXUS", label: "NEXUS LLM (Recommended)" }, // Moved to first position
     { value: "OpenAI", label: "OpenAI" },
     { value: "Anthropic", label: "Anthropic" },
     { value: "Google", label: "Google Gemini" },
     { value: "Mistral", label: "Mistral AI" },
     { value: "Grok", label: "Grok" },
-    { value: "Perplexity", label: "Perplexity AI" }, // Added Perplexity
+    { value: "Perplexity", label: "Perplexity AI" },
     { value: "Custom", label: "Custom/Other" },
+  ]
+
+  const NEXUS_MODELS = [ // Added NEXUS models
+    { value: "nexus-llm-pro", label: "NEXUS LLM Pro" },
+    { value: "nexus-llm-lite", label: "NEXUS LLM Lite" },
   ]
 
   const OPENAI_MODELS = [
@@ -88,7 +94,7 @@ export function LLMManagement() {
     { value: "grok-1.5", label: "Grok-1.5" },
   ]
 
-  const PERPLEXITY_MODELS = [ // Added Perplexity models
+  const PERPLEXITY_MODELS = [
     { value: "llama-3-8b-instruct", label: "Llama 3 8B Instruct" },
     { value: "llama-3-70b-instruct", label: "Llama 3 70B Instruct" },
     { value: "mixtral-8x7b-instruct", label: "Mixtral 8x7B Instruct" },
@@ -96,6 +102,8 @@ export function LLMManagement() {
 
   const getModelsForProvider = (provider: string) => {
     switch (provider) {
+      case "NEXUS": // Case for NEXUS
+        return NEXUS_MODELS
       case "OpenAI":
         return OPENAI_MODELS
       case "Anthropic":
@@ -104,7 +112,7 @@ export function LLMManagement() {
         return GOOGLE_MODELS
       case "Grok":
         return GROK_MODELS
-      case "Perplexity": // Case for Perplexity
+      case "Perplexity":
         return PERPLEXITY_MODELS
       default:
         return [{ value: "default-model", label: "Default Model" }]
