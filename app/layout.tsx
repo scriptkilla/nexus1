@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
+// Removed the old Toaster import as Sonner is now used directly in page.tsx
 
 const inter = Inter({ subsets: ["latin"] })
 

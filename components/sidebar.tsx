@@ -19,6 +19,7 @@ import {
   Settings,
   LogOut,
   Wand2,
+  Brain, // Import the Brain icon
 } from "lucide-react"
 
 interface SidebarProps {
@@ -36,6 +37,7 @@ export function Sidebar({ activeSection, setActiveSection }: SidebarProps) {
     { id: "nft", label: "NFT Marketplace", icon: ShoppingBag },
     { id: "ai-tools", label: "AI Creator Tools", icon: Sparkles },
     { id: "ai-game-creator", label: "AI Game Creator", icon: Wand2 },
+    { id: "llm-management", label: "LLM Management", icon: Brain }, // New menu item
     { id: "earnings", label: "Creator Earnings", icon: DollarSign },
     { id: "swap", label: "Token Swap", icon: ArrowUpDown },
     { id: "live-chat", label: "Live Chat", icon: MessageSquare },

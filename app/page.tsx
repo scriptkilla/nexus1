@@ -15,6 +15,8 @@ import { Messages } from "@/components/messages"
 import { Notifications } from "@/components/notifications"
 import { Profile } from "@/components/profile"
 import { AIGameCreator } from "@/components/ai-game-creator"
+import { LLMManagement } from "@/components/llm-management" // Import the new component
+import { Toaster } from "sonner" // Import Sonner Toaster
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("feed")
@@ -33,6 +35,8 @@ export default function Home() {
         return <AICreatorTools />
       case "ai-game-creator":
         return <AIGameCreator />
+      case "llm-management": // New case for LLM Management
+        return <LLMManagement />
       case "earnings":
         return <CreatorEarnings />
       case "swap":
@@ -59,6 +63,7 @@ export default function Home() {
           <main className="flex-1 overflow-auto">{renderContent()}</main>
         </div>
       </div>
+      <Toaster /> {/* Add the Sonner Toaster component here */}
     </div>
   )
 }
