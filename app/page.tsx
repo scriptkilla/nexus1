@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Sidebar } from "@/components/sidebar"
 import { Header } from "@/components/header"
 import { Feed } from "@/components/feed"
 import { WalletPanel } from "@/components/wallet-panel"
@@ -19,7 +18,7 @@ import { LLMManagement } from "@/components/llm-management"
 import { SettingsPanel } from "@/components/settings-panel"
 import { Toaster } from "sonner"
 import { FloatingCreatePostButton } from "@/components/floating-create-post-button"
-import { CreatePostModal } from "@/components/create-post-modal" // Import the new modal
+import { CreatePostModal } from "@/components/create-post-modal"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("feed")
@@ -122,15 +121,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="flex">
-        <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
-        <div className="flex-1 flex flex-col">
-          <Header setActiveSection={setActiveSection} />
-          <main className="flex-1 overflow-auto">{renderContent()}</main>
-        </div>
-      </div>
-      <FloatingCreatePostButton onClick={() => setShowCreatePostModal(true)} /> {/* Open modal on click */}
-      <CreatePostModal isOpen={showCreatePostModal} onOpenChange={setShowCreatePostModal} onPostCreated={handlePostCreated} /> {/* The new modal */}
+      <Header activeSection={activeSection} setActiveSection={setActiveSection} /> {/* Pass activeSection and setActiveSection */}
+      <main className="flex-1 overflow-auto">{renderContent()}</main>
+      <FloatingCreatePostButton onClick={() => setShowCreatePostModal(true)} />
+      <CreatePostModal isOpen={showCreatePostModal} onOpenChange={setShowCreatePostModal} onPostCreated={handlePostCreated} />
       <Toaster />
     </div>
   )

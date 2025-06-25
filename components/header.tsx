@@ -3,15 +3,17 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
-import { Search, Plus, Moon, Sun } from "lucide-react"
+import { Search, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
+import { MobileMenu } from "./mobile-menu" // Import the new MobileMenu
 
 interface HeaderProps {
-  setActiveSection: (section: string) => void;
+  activeSection: string; // Add activeSection prop
+  setActiveSection: (section: string) => void; // Add setActiveSection prop
 }
 
-export function Header({ setActiveSection }: HeaderProps) {
+export function Header({ activeSection, setActiveSection }: HeaderProps) {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -37,7 +39,6 @@ export function Header({ setActiveSection }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Removed Create Post button from here */}
             <Button variant="ghost" size="sm">
               <Sun className="w-4 h-4" />
             </Button>
@@ -57,7 +58,7 @@ export function Header({ setActiveSection }: HeaderProps) {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search NEXUS..."
-                className="pl-10 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0" // Remove right border radius and focus ring
+                className="pl-10 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') handleSearch();
                 }}
@@ -68,7 +69,7 @@ export function Header({ setActiveSection }: HeaderProps) {
                 <TooltipTrigger asChild>
                   <Button
                     size="default"
-                    className="rounded-l-none px-3" // Remove left border radius
+                    className="rounded-l-none px-3"
                     onClick={handleSearch}
                   >
                     <Search className="w-4 h-4" />
@@ -83,7 +84,6 @@ export function Header({ setActiveSection }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Removed Create Post button from here */}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -96,6 +96,7 @@ export function Header({ setActiveSection }: HeaderProps) {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
+          <MobileMenu activeSection={activeSection} setActiveSection={setActiveSection} /> {/* Add the MobileMenu */}
         </div>
       </div>
     </header>
