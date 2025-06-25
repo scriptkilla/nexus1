@@ -18,6 +18,7 @@ import { AIGameCreator } from "@/components/ai-game-creator"
 import { LLMManagement } from "@/components/llm-management"
 import { SettingsPanel } from "@/components/settings-panel"
 import { Toaster } from "sonner"
+import { FloatingCreatePostButton } from "@/components/floating-create-post-button" // Import the new component
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("feed")
@@ -66,6 +67,7 @@ export default function Home() {
           <main className="flex-1 overflow-auto">{renderContent()}</main>
         </div>
       </div>
+      <FloatingCreatePostButton onClick={() => setActiveSection("feed")} /> {/* Add the floating button */}
       <Toaster />
     </div>
   )

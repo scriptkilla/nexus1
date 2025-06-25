@@ -37,10 +37,7 @@ export function Header({ setActiveSection }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button size="sm" className="gap-2">
-              <Plus className="w-4 h-4" />
-              Create Post
-            </Button>
+            {/* Removed Create Post button from here */}
             <Button variant="ghost" size="sm">
               <Sun className="w-4 h-4" />
             </Button>
@@ -86,19 +83,8 @@ export function Header({ setActiveSection }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Removed Create Post button from here */}
           <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button size="sm" className="gap-2" onClick={() => setActiveSection("feed")}>
-                  <Plus className="w-4 h-4" />
-                  Create Post
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Create a new post to share with the community</p>
-              </TooltipContent>
-            </Tooltip>
-
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="ghost" size="sm" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
