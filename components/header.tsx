@@ -7,7 +7,7 @@ import { Search, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { MobileMenu } from "./mobile-menu"
-import { NexusLogoNeon } from "./nexus-logo-neon" // Import the new logo component
+import { NexusLogoAbstract } from "./nexus-logo-abstract" // Import the new logo component
 
 interface HeaderProps {
   activeSection: string;
@@ -56,7 +56,7 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
       <div className="flex items-center justify-between">
         {/* NEXUS Logo */}
         <div className="min-w-[100px] flex items-center justify-start">
-          <NexusLogoNeon />
+          <NexusLogoAbstract />
         </div>
 
         {/* Search Input and Button Group - Centered */}
