@@ -61,6 +61,7 @@ export function LLMManagement() {
     { value: "Anthropic", label: "Anthropic" },
     { value: "Google", label: "Google Gemini" },
     { value: "Mistral", label: "Mistral AI" },
+    { value: "Grok", label: "Grok" }, // Added Grok
     { value: "Custom", label: "Custom/Other" },
   ]
 
@@ -81,6 +82,11 @@ export function LLMManagement() {
     { value: "gemini-1.5-flash", label: "Gemini 1.5 Flash" },
   ]
 
+  const GROK_MODELS = [ // Added Grok models
+    { value: "grok-1", label: "Grok-1" },
+    { value: "grok-1.5", label: "Grok-1.5" },
+  ]
+
   const getModelsForProvider = (provider: string) => {
     switch (provider) {
       case "OpenAI":
@@ -89,6 +95,8 @@ export function LLMManagement() {
         return ANTHROPIC_MODELS
       case "Google":
         return GOOGLE_MODELS
+      case "Grok": // Case for Grok
+        return GROK_MODELS
       default:
         return [{ value: "default-model", label: "Default Model" }]
     }
