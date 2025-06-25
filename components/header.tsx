@@ -53,12 +53,14 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
   return (
     <header className="bg-card border-b border-border p-4">
       <div className="flex items-center justify-between">
-        {/* NEXUS Logo */}
-        <div className="text-lg font-bold text-primary min-w-[100px]">NEXUS</div>
+        {/* NEXUS Logo Image */}
+        <div className="min-w-[100px]">
+          <img src="/nexus-logo.jpg" alt="NEXUS Logo" className="h-8 w-auto" /> {/* Adjust height as needed */}
+        </div>
 
         {/* Search Input and Button Group - Centered */}
-        <div className="flex flex-1 justify-center mx-4"> {/* Added mx-4 for some horizontal spacing */}
-          <div className="relative flex-grow max-w-md"> {/* max-w-md to control width on larger screens */}
+        <div className="flex flex-1 justify-center mx-4">
+          <div className="relative flex-grow max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="Search NEXUS..."
@@ -86,7 +88,7 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
           </TooltipProvider>
         </div>
 
-        <div className="flex items-center gap-2 min-w-[100px] justify-end"> {/* min-w and justify-end to push items to right */}
+        <div className="flex items-center gap-2 min-w-[100px] justify-end">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
