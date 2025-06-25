@@ -26,8 +26,9 @@ import {
   LogOut,
   Wand2,
   Brain,
-  Menu, // Using Menu icon for the dropdown trigger
+  Menu, // Keep Menu icon for reference if needed elsewhere, but not for trigger
 } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar" // Import Avatar components
 
 interface MobileMenuProps {
   activeSection: string
@@ -55,8 +56,11 @@ export function MobileMenu({ activeSection, setActiveSection }: MobileMenuProps)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Menu className="w-5 h-5" />
+        <Button variant="ghost" size="icon" className="rounded-full w-9 h-9 p-0"> {/* Make button round and small */}
+          <Avatar className="w-9 h-9"> {/* Avatar to fill the button space */}
+            <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Your Profile" /> {/* Placeholder image */}
+            <AvatarFallback>YP</AvatarFallback> {/* Fallback for Your Profile */}
+          </Avatar>
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
