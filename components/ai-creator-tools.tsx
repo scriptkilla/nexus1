@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -6,8 +8,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Sparkles, ImageIcon, Video, Music, Download, Share2, Wand2 } from "lucide-react"
+import { useState } from "react"
 
 export function AICreatorTools() {
+  const [selectedAiModel, setSelectedAiModel] = useState("nexus-ai") // New state for AI Model
   const recentCreations = [
     {
       id: 1,
@@ -84,6 +88,22 @@ export function AICreatorTools() {
                   <Textarea placeholder="Describe the image you want to create..." className="min-h-24" />
                 </div>
 
+                {/* New AI Model Selection */}
+                <div>
+                  <label className="text-sm font-medium mb-2 block">AI Model</label>
+                  <Select value={selectedAiModel} onValueChange={setSelectedAiModel}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select AI Model" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="nexus-ai">NEXUS AI (Recommended)</SelectItem>
+                      <SelectItem value="openai-dalle">OpenAI DALL-E</SelectItem>
+                      <SelectItem value="midjourney">Midjourney</SelectItem>
+                      <SelectItem value="stable-diffusion">Stable Diffusion</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div>
                   <label className="text-sm font-medium mb-2 block">Style</label>
                   <Select>
@@ -125,7 +145,7 @@ export function AICreatorTools() {
                   </div>
                 </div>
 
-                <Button className="w-full gap-2">
+                <Button className="w-full gap-2" onClick={() => console.log('Generating image with model:', selectedAiModel)}>
                   <Wand2 className="w-4 h-4" />
                   Generate Image
                 </Button>
