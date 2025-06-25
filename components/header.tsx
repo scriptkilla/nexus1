@@ -19,6 +19,12 @@ export function Header({ setActiveSection }: HeaderProps) {
     setMounted(true)
   }, [])
 
+  // Placeholder for search functionality
+  const handleSearch = () => {
+    console.log("Initiating search...")
+    // In a real application, you would trigger a search action here.
+  }
+
   if (!mounted) {
     return (
       <header className="bg-card border-b border-border p-4">
@@ -48,9 +54,34 @@ export function Header({ setActiveSection }: HeaderProps) {
     <header className="bg-card border-b border-border p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 flex-1 max-w-md">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <Input placeholder="Search NEXUS..." className="pl-10" />
+          {/* Search Input and Button Group */}
+          <div className="flex flex-1">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input
+                placeholder="Search NEXUS..."
+                className="pl-10 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0" // Remove right border radius and focus ring
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') handleSearch();
+                }}
+              />
+            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="default"
+                    className="rounded-l-none px-3" // Remove left border radius
+                    onClick={handleSearch}
+                  >
+                    <Search className="w-4 h-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Initiate search</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
 
