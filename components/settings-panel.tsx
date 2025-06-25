@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import { Badge } from "@/components/ui/badge" // Import Badge
 import { Bell, Shield, Wallet, Sparkles } from "lucide-react"
 
 export function SettingsPanel() {
