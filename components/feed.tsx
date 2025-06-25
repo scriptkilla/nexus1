@@ -7,9 +7,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
-import { ImageUpload } from "@/components/ui/file-upload"
 import { Heart, MessageCircle, Repeat2, Share, Zap, Send, ImageIcon } from "lucide-react"
 import { TipModal } from "@/components/tip-modal"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -36,62 +34,12 @@ interface Post {
   }>
 }
 
-export function Feed() {
-  const [newPost, setNewPost] = useState("")
-  const [newPostImage, setNewPostImage] = useState("")
-  const [showImageUpload, setShowImageUpload] = useState(false)
-  const [posts, setPosts] = useState<Post[]>([
-    {
-      id: 1,
-      user: { name: "Alex Chen", username: "@alexchen", avatar: "/placeholder.svg?height=40&width=40" },
-      content: "Just earned 50 $NXG tokens in the new battle royale game! The P2E mechanics are incredible 🎮⚡",
-      timestamp: "2h ago",
-      likes: 124,
-      comments: 23,
-      reposts: 12,
-      tips: "2.5 ETH",
-      hashtags: ["#P2E", "#Gaming", "#NXG"],
-      isLiked: false,
-      isReposted: false,
-      userComments: [
-        { id: 1, user: "Sarah Kim", content: "Amazing! Which game is this?", timestamp: "1h ago" },
-        { id: 2, user: "Mike Rodriguez", content: "P2E is the future! 🚀", timestamp: "45m ago" },
-      ],
-    },
-    {
-      id: 2,
-      user: { name: "Sarah Kim", username: "@sarahk", avatar: "/placeholder.svg?height=40&width=40" },
-      content: "Created this AI-generated artwork using NEXUS AI tools. Minting as NFT soon! 🎨✨",
-      timestamp: "4h ago",
-      likes: 89,
-      comments: 15,
-      reposts: 8,
-      tips: "1.2 SOL",
-      hashtags: ["#AIArt", "#NFT", "#Creator"],
-      image: "/placeholder.svg?height=300&width=500",
-      isLiked: true,
-      isReposted: false,
-      userComments: [{ id: 1, user: "CryptoArt", content: "Stunning work! 🔥", timestamp: "3h ago" }],
-    },
-    {
-      id: 3,
-      user: { name: "Mike Rodriguez", username: "@mikerod", avatar: "/placeholder.svg?height=40&width=40" },
-      content: "Tournament starts in 1 hour! Prize pool: 1000 $NXG + 5 ETH. Who's ready to compete? 🏆",
-      timestamp: "6h ago",
-      likes: 256,
-      comments: 67,
-      reposts: 45,
-      tips: "0.8 BTC",
-      hashtags: ["#Tournament", "#Gaming", "#Crypto"],
-      isLiked: false,
-      isReposted: true,
-      userComments: [
-        { id: 1, user: "GameMaster", content: "Count me in! 💪", timestamp: "5h ago" },
-        { id: 2, user: "Alex Chen", content: "Ready to dominate!", timestamp: "4h ago" },
-      ],
-    },
-  ])
+interface FeedProps {
+  posts: Post[]
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>>
+}
 
+export function Feed({ posts, setPosts }: FeedProps) {
   // Handle like functionality
   const handleLike = (postId: number) => {
     setPosts((prevPosts) =>
@@ -152,37 +100,6 @@ export function Feed() {
         alert("Unable to copy to clipboard. Please try again.")
       }
     }
-  }
-
-  // Handle new post creation
-  const handleCreatePost = () => {
-    if (!newPost.trim()) return
-
-    const newPostObj: Post = {
-      id: Date.now(),
-      user: { name: "You", username: "@you", avatar: "/placeholder.svg?height=40&width=40" },
-      content: newPost.trim(),
-      timestamp: "now",
-      likes: 0,
-      comments: 0,
-      reposts: 0,
-      tips: "0 ETH",
-      hashtags: [],
-      image: newPostImage || undefined,
-      isLiked: false,
-      isReposted: false,
-      userComments: [],
-    }
-
-    setPosts((prev) => [newPostObj, ...prev])
-    setNewPost("")
-    setNewPostImage("")
-    setShowImageUpload(false)
-  }
-
-  // Handle image upload
-  const handleImageUpload = (imageUrl: string) => {
-    setNewPostImage(imageUrl)
   }
 
   // Comments Modal Component
@@ -311,70 +228,6 @@ export function Feed() {
   return (
     <TooltipProvider>
       <div className="max-w-2xl mx-auto p-6 space-y-6">
-        {/* Create Post */}
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex gap-3">
-              <Avatar>
-                <AvatarImage src="/placeholder.svg?height=40&width=40" />
-                <AvatarFallback>You</AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <Textarea
-                  placeholder="What's happening on NEXUS?"
-                  value={newPost}
-                  onChange={(e) => setNewPost(e.target.value)}
-                  className="min-h-20 mb-3 resize-none"
-                />
-
-                {/* Image Upload Section */}
-                {showImageUpload && (
-                  <div className="mb-3">
-                    <ImageUpload onImageUpload={handleImageUpload} currentImage={newPostImage} />
-                  </div>
-                )}
-
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => setShowImageUpload(!showImageUpload)}
-                          className={showImageUpload ? "text-primary" : ""}
-                        >
-                          <ImageIcon className="w-4 h-4" />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Add image to post</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <div className="flex gap-2">
-                      <Badge variant="outline">🎮 Gaming</Badge>
-                      <Badge variant="outline">🎨 AI Art</Badge>
-                      <Badge variant="outline">💎 NFT</Badge>
-                    </div>
-                  </div>
-
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button onClick={handleCreatePost} disabled={!newPost.trim()}>
-                        Post
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Share your post with the community</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Posts */}
         {posts.map((post) => (
           <Card key={post.id}>
