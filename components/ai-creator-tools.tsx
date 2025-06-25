@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { Sparkles, ImageIcon, Video, Music, Download, Share2, Wand2 } from "lucide-react"
 import { useState } from "react"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function AICreatorTools() {
   const [selectedAiModel, setSelectedAiModel] = useState("nexus-ai") // New state for AI Model
@@ -145,10 +146,17 @@ export function AICreatorTools() {
                   </div>
                 </div>
 
-                <Button className="w-full gap-2" onClick={() => console.log('Generating image with model:', selectedAiModel)}>
-                  <Wand2 className="w-4 h-4" />
-                  Generate Image
-                </Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button className="w-full gap-2" onClick={() => console.log('Generating image with model:', selectedAiModel)}>
+                      <Wand2 className="w-4 h-4" />
+                      Generate Image
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Generate image using the selected AI model</p>
+                  </TooltipContent>
+                </Tooltip>
 
                 <div className="text-xs text-muted-foreground text-center">Cost: 10 NXG tokens per generation</div>
               </CardContent>
@@ -168,17 +176,38 @@ export function AICreatorTools() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Download className="w-4 h-4" />
-                    Download
-                  </Button>
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Share2 className="w-4 h-4" />
-                    Share
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Download className="w-4 h-4" />
+                        Download
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Download the generated image</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Share the generated image</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
 
-                <Button className="w-full mt-2">Mint as NFT</Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button className="w-full mt-2">Mint as NFT</Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Mint the generated image as an NFT</p>
+                  </TooltipContent>
+                </Tooltip>
               </CardContent>
             </Card>
           </div>
@@ -226,10 +255,17 @@ export function AICreatorTools() {
                   </Select>
                 </div>
 
-                <Button className="w-full gap-2">
-                  <Video className="w-4 h-4" />
-                  Generate Video
-                </Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button className="w-full gap-2">
+                      <Video className="w-4 h-4" />
+                      Generate Video
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Generate video using AI</p>
+                  </TooltipContent>
+                </Tooltip>
 
                 <div className="text-xs text-muted-foreground text-center">Cost: 50 NXG tokens per generation</div>
               </CardContent>
@@ -248,14 +284,28 @@ export function AICreatorTools() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Download className="w-4 h-4" />
-                    Download
-                  </Button>
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Share2 className="w-4 h-4" />
-                    Share
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Download className="w-4 h-4" />
+                        Download
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Download the generated video</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Share the generated video</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </CardContent>
             </Card>
@@ -306,10 +356,17 @@ export function AICreatorTools() {
                   </Select>
                 </div>
 
-                <Button className="w-full gap-2">
-                  <Music className="w-4 h-4" />
-                  Generate Music
-                </Button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button className="w-full gap-2">
+                      <Music className="w-4 h-4" />
+                      Generate Music
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Generate music using AI</p>
+                  </TooltipContent>
+                </Tooltip>
 
                 <div className="text-xs text-muted-foreground text-center">Cost: 25 NXG tokens per generation</div>
               </CardContent>
@@ -328,14 +385,28 @@ export function AICreatorTools() {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Download className="w-4 h-4" />
-                    Download
-                  </Button>
-                  <Button variant="outline" className="flex-1 gap-2">
-                    <Share2 className="w-4 h-4" />
-                    Share
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Download className="w-4 h-4" />
+                        Download
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Download the generated music</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" className="flex-1 gap-2">
+                        <Share2 className="w-4 h-4" />
+                        Share
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Share the generated music</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </CardContent>
             </Card>
@@ -360,14 +431,28 @@ export function AICreatorTools() {
                   <p className="text-xs text-muted-foreground mb-3">{creation.timestamp}</p>
 
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="flex-1 gap-1">
-                      <Download className="w-3 h-3" />
-                      Download
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1 gap-1">
-                      <Share2 className="w-3 h-3" />
-                      Share
-                    </Button>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline" size="sm" className="flex-1 gap-1">
+                          <Download className="w-3 h-3" />
+                          Download
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Download this creation</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline" size="sm" className="flex-1 gap-1">
+                          <Share2 className="w-3 h-3" />
+                          Share
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Share this creation</p>
+                      </TooltipContent>
+                    </Tooltip>
                   </div>
                 </CardContent>
               </Card>
