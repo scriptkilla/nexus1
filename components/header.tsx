@@ -53,9 +53,9 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
   return (
     <header className="bg-card border-b border-border p-4">
       <div className="flex items-center justify-between">
-        {/* NEXUS Logo Image */}
+        {/* NEXUS Logo Text */}
         <div className="min-w-[100px]">
-          <img src="/nexus-logo.jpg" alt="NEXUS Logo" className="h-8 w-auto" /> {/* Adjust height as needed */}
+          <div className="text-lg font-bold text-primary">NEXUS</div>
         </div>
 
         {/* Search Input and Button Group - Centered */}
