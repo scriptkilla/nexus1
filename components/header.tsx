@@ -6,11 +6,11 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 import { Search, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
-import { MobileMenu } from "./mobile-menu" // Import the new MobileMenu
+import { MobileMenu } from "./mobile-menu"
 
 interface HeaderProps {
-  activeSection: string; // Add activeSection prop
-  setActiveSection: (section: string) => void; // Add setActiveSection prop
+  activeSection: string;
+  setActiveSection: (section: string) => void;
 }
 
 export function Header({ activeSection, setActiveSection }: HeaderProps) {
@@ -31,6 +31,8 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
     return (
       <header className="bg-card border-b border-border p-4">
         <div className="flex items-center justify-between">
+          {/* NEXUS Logo Placeholder */}
+          <div className="text-lg font-bold text-primary">NEXUS</div>
           <div className="flex items-center gap-4 flex-1 max-w-md">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -51,39 +53,40 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
   return (
     <header className="bg-card border-b border-border p-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 flex-1 max-w-md">
-          {/* Search Input and Button Group */}
-          <div className="flex flex-1">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                placeholder="Search NEXUS..."
-                className="pl-10 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') handleSearch();
-                }}
-              />
-            </div>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    size="default"
-                    className="rounded-l-none px-3"
-                    onClick={handleSearch}
-                  >
-                    <Search className="w-4 h-4" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Initiate search</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        {/* NEXUS Logo */}
+        <div className="text-lg font-bold text-primary min-w-[100px]">NEXUS</div>
+
+        {/* Search Input and Button Group - Centered */}
+        <div className="flex flex-1 justify-center mx-4"> {/* Added mx-4 for some horizontal spacing */}
+          <div className="relative flex-grow max-w-md"> {/* max-w-md to control width on larger screens */}
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Input
+              placeholder="Search NEXUS..."
+              className="pl-10 rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') handleSearch();
+              }}
+            />
           </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  size="default"
+                  className="rounded-l-none px-3"
+                  onClick={handleSearch}
+                >
+                  <Search className="w-4 h-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Initiate search</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-[100px] justify-end"> {/* min-w and justify-end to push items to right */}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -96,7 +99,7 @@ export function Header({ activeSection, setActiveSection }: HeaderProps) {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <MobileMenu activeSection={activeSection} setActiveSection={setActiveSection} /> {/* Add the MobileMenu */}
+          <MobileMenu activeSection={activeSection} setActiveSection={setActiveSection} />
         </div>
       </div>
     </header>
