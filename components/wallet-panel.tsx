@@ -9,6 +9,8 @@ import { useWallet } from "@/hooks/use-wallet"
 import { WalletConnect } from "@/components/wallet-connect"
 import { AddTokenModal } from "@/components/add-token-modal"
 import { useTokenManagement } from "@/hooks/use-token-management"
+import { SendCryptoModal } from "@/components/send-crypto-modal" // Import SendCryptoModal
+import { ReceiveCryptoModal } from "@/components/receive-crypto-modal" // Import ReceiveCryptoModal
 
 export function WalletPanel() {
   const [balanceVisible, setBalanceVisible] = useState(true)
@@ -165,14 +167,18 @@ export function WalletPanel() {
               <CardTitle>Quick Actions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Button className="w-full gap-2" disabled={!wallet.isConnected}>
-                <ArrowUpRight className="w-4 h-4" />
-                Send Crypto
-              </Button>
-              <Button variant="outline" className="w-full gap-2">
-                <ArrowDownLeft className="w-4 h-4" />
-                Receive
-              </Button>
+              <SendCryptoModal>
+                <Button className="w-full gap-2" disabled={!wallet.isConnected}>
+                  <ArrowUpRight className="w-4 h-4" />
+                  Send Crypto
+                </Button>
+              </SendCryptoModal>
+              <ReceiveCryptoModal>
+                <Button variant="outline" className="w-full gap-2">
+                  <ArrowDownLeft className="w-4 h-4" />
+                  Receive
+                </Button>
+              </ReceiveCryptoModal>
               <Button variant="outline" className="w-full gap-2">
                 Swap Tokens
               </Button>
